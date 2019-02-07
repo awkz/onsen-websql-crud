@@ -5,17 +5,18 @@
 	<link rel="stylesheet" type="text/css" href="css/onsenui.css">
 	<link rel="stylesheet" type="text/css" href="css/onsen-css-components.css">
 	<title>Judul App</title>
-	<script src="phonegap.js"></script> 
+	<script src="phonegap.js"></script>
 	<script type="text/javascript" charset="utf-8">
-        function onLoad(){
-            document.addEventListener("deviceready", onDeviceReady, true);
-        }
-        function exitFromApp(){
-            if (confirm("Apakah Yakin Ingin Keluar?")) {
-                navigator.app.exitApp();
-            }
-        }
-    </script>
+		function onLoad() {
+			document.addEventListener("deviceready", onDeviceReady, true);
+		}
+
+		function exitFromApp() {
+			if (confirm("Apakah Yakin Ingin Keluar?")) {
+				navigator.app.exitApp();
+			}
+		}
+	</script>
 </head>
 
 <body>
@@ -102,20 +103,6 @@
 							<li class="list-item list-item--material">
 								Data Kosong
 							</li>
-
-							<!-- <li class="list-item list-item--material">
-								<div class="list-item__center list-item--material__center">
-									<div class="list-item__title list-item--material__title">No. 2</div>
-									<div class="list-item__subtitle list-item--material__subtitle">
-										<p>Field satu</p>
-										<p>Field dua</p>
-										<p>
-											<button class="button button--material">Edit</button>
-											<button class="button button--material">Hapus</button>
-										</p>
-									</div>
-								</div>
-							</li> -->
 						</ul>
 					</div>
 				</div>
@@ -206,7 +193,6 @@
 		};
 	</script>
 	<script src="js/main.js"></script>
-
 </body>
 
 </html>
