@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="css/onsenui.css">
+	<link rel="stylesheet" type="text/css" href="css/onsen-css-components.css">
+	<title>Judul App</title>
+	<script type="text/javascript" charset="utf-8">
+        function onLoad(){
+            document.addEventListener("deviceready", onDeviceReady, true);
+        }
+        function exitFromApp(){
+            if (confirm("Apakah Yakin Ingin Keluar?")) {
+                navigator.app.exitApp();
+            }
+        }
+    </script>
+</head>
+
+<body>
+	<ons-splitter>
+		<ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+			<ons-page>
+				<ons-list>
+					<ons-list-item onclick="fn.load('home.html')" tappable>
+						Beranda
+					</ons-list-item>
+					<ons-list-item onclick="fn.load('crud1.html')" tappable>
+						Barang
+					</ons-list-item>
+					<ons-list-item onclick="fn.load('crud2.html')" tappable>
+						Barang Masuk
+					</ons-list-item>
+					<ons-list-item onclick="exitFromApp()" tappable>
+						Exit
+					</ons-list-item>
+				</ons-list>
+			</ons-page>
+		</ons-splitter-side>
+		<ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+	</ons-splitter>
+
+	<template id="home.html">
+		<ons-page>
+			<ons-toolbar>
+				<div class="left">
+					<ons-toolbar-button onclick="fn.open()">
+						<ons-icon icon="md-menu"></ons-icon>
+					</ons-toolbar-button>
+				</div>
+				<div class="center">
+					Main
+				</div>
+			</ons-toolbar>
+			<p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+				Diisi bebas
+			</p>
+			<p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+				Enaknya diisi apa?
+			</p>
+		</ons-page>
+	</template>
+
+	<template id="crud1.html">
+		<ons-page>
+			<ons-toolbar>
+				<div class="left">
+					<ons-toolbar-button onclick="fn.open()">
+						<ons-icon icon="md-menu"></ons-icon>
+					</ons-toolbar-button>
+				</div>
+				<div class="center">
+					Barang
+				</div>
+			</ons-toolbar>
+
+			<div style="height: 200px; padding: 1px 0 0 0;">
+				<div class="card card--material">
+					<div class="card__title card--material__title">Form Barang</div>
+					<div class="card__content card--material__content">
+						<span>
+							<form id="form-barang">
+								<div><input class="text-input text-input--material" placeholder="Nama Barang" id="nama_barang" type="text"
+									 required></div>
+								<br />
+								<div><input class="text-input text-input--material" placeholder="Deskripsi" id="deskripsi" type="text" required></div>
+								<br />
+								<div><input class="text-input text-input--material" placeholder="Satuan" id="satuan" type="text" required></div>
+								<br />
+								<button class="button button--material" type="submit" onclick="addBarang()">Submit</button>
+							</form>
+						</span>
+					</div>
+				</div>
+
+				<div class="card card--material">
+					<div class="card__title card--material__title">Data</div>
+					<div class="card__content card--material__content">
+						<ul class="list list--material" id="databarang">
+
+							<li class="list-item list-item--material">
+								Data Kosong
+							</li>
+
+							<!-- <li class="list-item list-item--material">
+								<div class="list-item__center list-item--material__center">
+									<div class="list-item__title list-item--material__title">No. 2</div>
+									<div class="list-item__subtitle list-item--material__subtitle">
+										<p>Field satu</p>
+										<p>Field dua</p>
+										<p>
+											<button class="button button--material">Edit</button>
+											<button class="button button--material">Hapus</button>
+										</p>
+									</div>
+								</div>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<script>
+				ons.ready(function() {
+				getBarangs();
+			});
+			</script>
+
+		</ons-page>
+	</template>
+
+	<template id="crud2.html">
+		<ons-page>
+			<ons-toolbar>
+				<div class="left">
+					<ons-toolbar-button onclick="fn.open()">
+						<ons-icon icon="md-menu"></ons-icon>
+					</ons-toolbar-button>
+				</div>
+				<div class="center">
+					Barang Masuk
+				</div>
+			</ons-toolbar>
+
+			<div style="height: 200px; padding: 1px 0 0 0;">
+				<div class="card card--material">
+					<div class="card__title card--material__title">Form Brang Masuk</div>
+					<div class="card__content card--material__content">
+						<span>
+							<form id="form-masuk">
+								<div>
+									<select class="select-input" id="id_barang">
+										<option>-- Pilih --</option>
+									</select>
+								</div>
+								<br />
+								<div>
+									<input class="text-input text-input--material" placeholder="Inputan 1" type="date" id="tanggal" required>
+								</div>
+								<br />
+								<div>
+									<input class="text-input text-input--material" placeholder="Jumlah Barang" type="number" id="jumlahbarang"
+									 required>
+								</div>
+								<br />
+								<button class="button button--material" onclick="addBarangMasuk()">Tambahkan</button>
+							</form>
+						</span>
+					</div>
+				</div>
+
+				<div class="card card--material">
+					<div class="card__title card--material__title">Data</div>
+					<div class="card__content card--material__content">
+						<ul class="list list--material" id="databarangmasuk">
+							<li class="list-item list-item--material">
+								Data Kosong
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<script>
+				ons.ready(function () {
+					selectBarang();
+					getBarangMasuks();
+				});
+			</script>
+		</ons-page>
+	</template>
+	<script src="js/onsenui.min.js"></script>
+
+	<script type="text/javascript">
+		window.fn = {};
+
+		window.fn.open = function () {
+			var menu = document.getElementById('menu');
+			menu.open();
+		};
+
+		window.fn.load = function (page) {
+			var content = document.getElementById('content');
+			var menu = document.getElementById('menu');
+			content.load(page)
+				.then(menu.close.bind(menu));
+		};
+	</script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
