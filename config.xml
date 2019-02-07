@@ -7,7 +7,7 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Websql</name>
+    <name>CRUD</name>
 
     <description>
         Aplikasi CRUD websql.
